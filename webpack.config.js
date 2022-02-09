@@ -17,7 +17,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "galactic-age",
+      title: "recipe-generator",
       template: "./src/index.html",
       inject: "body",
     }),
