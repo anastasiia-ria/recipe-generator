@@ -1,1 +1,45 @@
+.checked {
+  background: rgb(204, 149, 149);
+}
 
+#choices label,
+button {
+  border: 1px solid;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#choices label:hover,
+button:hover {
+  background: rgb(204, 149, 149);
+}
+
+#choices input {
+  display: none;
+}
+
+#choices {
+  margin: 20px 0;
+}
+
+.container {
+  width: 900px;
+  margin: auto;
+}
+
+#recipe-box {
+  display: flex;
+}
+
+#recipe-list {
+  width: 40%;
+}
+
+#recipes {
+  width: 60%;
+}
+
+#recipes > ul {
+  display: none;
+}
