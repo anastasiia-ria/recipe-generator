@@ -5,30 +5,14 @@
   </head>
   <body>
     <div class="container">
-      <label class="main-ingredient">Choose your main ingredient:</label>
+      <h2>Search by ingredient:</h2>
       <div id="choices">
-        <label>
-          <input type="radio" name="main-ingredient" value="chicken" />
-          Chicken
-        </label>
-        <label>
-          <input type="radio" name="main-ingredient" value="beef" />
-          Beef
-        </label>
-        <label>
-          <input type="radio" name="main-ingredient" value="pork" />
-          Pork
-        </label>
-        <label>
-          <input type="radio" name="main-ingredient" value="tofu" />
-          Tofu
-        </label>
-        <label>
-          <input type="radio" name="main-ingredient" value="potato" />
-          Potato
-        </label>
+        <button id="chicken" type="button">Chicken</button>
+        <button id="beef" type="button">Beef</button>
+        <button id="pork" type="button">Pork</button>
+        <button id="tofu" type="button">Tofu</button>
+        <button id="potato" type="button">Potato</button>
       </div>
-      <button id="get-recipe" type="button">Submit</button>
       <div class="showErrors"></div>
       <div id="recipe-box">
         <ul id="recipe-list"></ul>
