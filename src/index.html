@@ -1,8 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title></title>
-</head>
-<body>
-</body>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <label class="main-ingredient">Choose your main ingredient:</label>
+      <div id="choices">
+        <label>
+          <input type="radio" name="main-ingredient" value="chicken" />
+          Chicken
+        </label>
+        <label>
+          <input type="radio" name="main-ingredient" value="beef" />
+          Beef
+        </label>
+        <label>
+          <input type="radio" name="main-ingredient" value="pork" />
+          Pork
+        </label>
+        <label>
+          <input type="radio" name="main-ingredient" value="tofu" />
+          Tofu
+        </label>
+        <label>
+          <input type="radio" name="main-ingredient" value="potato" />
+          Potato
+        </label>
+      </div>
+      <button id="get-recipe" type="button">Submit</button>
+      <div class="showErrors"></div>
+      <div id="recipe-box">
+        <ul id="recipe-list"></ul>
+        <div id="recipes"></div>
+      </div>
+    </div>
+  </body>
 </html>
