@@ -1,6 +1,4 @@
-# Anastasiia Riabets and Hayley McVay
-
-#### Recipe website
+# Recipe generator website
 
 #### By Anastasiia Riabets and Hayley McVay
 
