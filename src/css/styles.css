@@ -2,6 +2,9 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   background-color: white;
   color: #588b88;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 ul {
@@ -9,77 +12,114 @@ ul {
   padding: 0;
 }
 
-.checked {
-  background: #588b88;
+button,
+#random {
+  border: 4px solid white;
   color: white;
-}
-
-button {
-  border: 4px solid #588b88;
-  color: #588b88;
   font-size: 20px;
   background-color: transparent;
-  padding: 10px 20px;
+  padding: 10px 0;
+  width: 100px;
   margin: 10px;
   cursor: pointer;
   border-radius: 10px;
   text-transform: lowercase;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  display: inline-block;
+}
+
+button:hover,
+button:focus,
+#random:hover,
+#random:focus {
+  background: white;
+  color: #588b88;
 }
 
 #recipe-list li:hover,
-button:hover,
-button:focus {
+#recipe-list li:focus {
   background: #588b88;
   color: white;
 }
 
-#choices {
-  margin: 20px 0;
-}
-
 .container {
-  width: 900px;
+  width: 100vw;
   margin: auto;
   text-align: center;
 }
 
 #recipe-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   text-align: left;
 }
 
+#main {
+  width: 100%;
+}
+
+#header {
+  width: 100%;
+  height: 300px;
+  background-image: url("../assets/images/main.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#header-text {
+  padding: 30px;
+  background-color: rgba(238, 235, 225, 0.9);
+}
+
 #recipe-list {
-  width: 40%;
+  height: calc(100% - 390px);
+  display: none;
   cursor: pointer;
+  position: fixed;
+  left: 0;
+  top: 300px;
+  background-color: rgb(88, 139, 136, 0.3);
+  margin: 0;
+  transition: 0.5s ease-in-out;
+  overflow: scroll;
+}
+
+.recipe-name {
+  width: 150px;
+  padding: 0 10px;
+  text-align: center;
+}
+
+#recipe-list:hover {
+  left: 0;
 }
 
 #recipe-list li {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px;
-  border: 4px solid #588b88;
-  margin: 10px 0;
-  font-size: 20px;
-  border-radius: 10px;
+  border-bottom: 2px solid white;
+  font-size: 17px;
 }
 
 #recipes {
-  width: 45%;
-}
-
-#recipes > ul {
-  display: none;
+  width: 60%;
+  height: calc(100vh - 400px);
+  overflow: scroll;
 }
 
 .ingredients {
   display: flex;
   border-left: 1px solid;
+  margin: auto;
   margin-top: 10px;
-  width: 100%;
+  width: 70%;
   justify-content: stretch;
   text-transform: lowercase;
 }
@@ -135,4 +175,65 @@ li.header {
   width: 20px;
   display: block;
   height: 19px;
+}
+
+#top {
+  width: 50px;
+  height: 50px;
+  background-color: #588b88;
+  color: white;
+  border-radius: 50%;
+  position: fixed;
+  right: 10px;
+  bottom: 115px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#choices {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #588b88;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 2px solid white;
+}
+
+.checked {
+  background: #588b88;
+  color: white;
+}
+
+#choices input {
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 10px 0 10px 10px;
+}
+
+#choices input::placeholder {
+  color: white;
+}
+
+#search-box {
+  width: 155px;
+  position: relative;
+  display: inline-block;
+}
+
+#search-icon {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 1;
+}
+
+#search-box input {
+  color: white;
+}
+
+.margin {
+  margin-left: 110px;
 }
