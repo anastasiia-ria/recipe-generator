@@ -5,6 +5,7 @@ import Recipe from "./js/recipe.js";
 $(document).ready(function () {
   let idArray = [];
   attachListeners();
+  makeApiCallRandom();
 
   function getListElements(response) {
     if (response) {
@@ -14,11 +15,12 @@ $(document).ready(function () {
         const recipeName = meals[i].strMeal;
         const id = meals[i].idMeal;
         const imgCode = meals[i].strMealThumb;
-        $("ul#recipe-list").append(`<li id=${id}>${recipeName}<img class="list-img"src=${imgCode}></li>`);
+        $("ul#recipe-list").append(`<li id=${id}><span class="recipe-name">${recipeName}</span><img class="list-img"src=${imgCode}></li>`);
         idArray.push(id);
       }
       $("ul#recipe-list").children(":first").addClass("checked");
     } else {
+      console.log("error");
       $(".showErrors").text(`There was an error: ${response}`);
     }
   }
@@ -29,10 +31,12 @@ $(document).ready(function () {
       $(`#recipes > ul.${this.id}`).show();
       $("#recipe-list > li").removeClass("checked");
       $(this).addClass("checked");
+      $("html, body").animate({ scrollTop: 300 }, "slow");
     });
 
     $("#choices").on("click", "button", function () {
       let ingredient = this.id;
+      $("#recipe-list").show();
       $("#recipe-list").empty();
       $("#recipes").empty();
       idArray = [];
@@ -62,18 +66,49 @@ $(document).ready(function () {
           $(`ul.measure${id}`).append(`<li>${measure}</li>`);
         }
       }
+      $("#recipes > ul").hide();
+      $("#recipes").children(":first").show();
     } else {
       $(".showErrors").text(`There was an error: ${response}`);
     }
   }
+  async function makeApiCallRandom() {
+    const recipeResponse = await Recipe.getRandom();
+    getRecipeElements(recipeResponse);
+  }
 
   async function makeApiCall(ingredient) {
     const idResponse = await Recipe.getId(ingredient);
-    getListElements(idResponse);
-
-    for (let i = 0; i < idArray.length; i++) {
-      const recipeResponse = await Recipe.getRecipe(idArray[i]);
-      getRecipeElements(recipeResponse);
+    if (idResponse.meals !== null) {
+      getListElements(idResponse);
+      for (let i = 0; i < idArray.length; i++) {
+        const recipeResponse = await Recipe.getRecipe(idArray[i]);
+        getRecipeElements(recipeResponse);
+      }
+    } else {
+      $(".showErrors").text(`Sorry, we could not find recipes with ${ingredient}`);
+      setTimeout(function () {
+        $(".showErrors").empty();
+      }, 2000);
     }
   }
+
+  $("#top").click(function () {
+    $("html, body").animate({ scrollTop: 300 }, "slow");
+  });
+
+  $("#random").click(function () {
+    $("#recipes").empty();
+    makeApiCallRandom();
+  });
+
+  $("#search-icon").click(function () {
+    const ingredient = $("input#search").val();
+    $("input#search").val("");
+    $("#recipe-list").show();
+    $("#recipe-list").empty();
+    $("#recipes").empty();
+    idArray = [];
+    makeApiCall(ingredient);
+  });
 });
